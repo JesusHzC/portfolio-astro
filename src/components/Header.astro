@@ -1,0 +1,25 @@
+---
+import profile from '../assets/profile.png'
+---
+
+<header class="w-full max-w-[60%] mx-auto my-10 p-5 text-white">
+    <div class="flex justify-center items-center my-10">
+        <div>
+            <div class="relative w-64 h-64 flex items-center justify-center">
+                <!-- Radial Gradient Background -->
+                <div class="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-2xl opacity-90 z-0"></div>
+
+                <!-- Avatar Image -->
+                <img src={profile.src}
+                     alt="Avatar"
+                     class="h-40 z-10"
+                />
+            </div>
+        </div>
+        <div class="grid gap-y-5">
+            <p class="text-xl">Un desarrollador de software</p>
+            <p class="text-5xl">Web y móvil<br/>desde la idea hasta el lanzamiento</p>
+            <p class="text-sm">Construyo aplicaciones sólidas, modernas y centradas en el usuario.</p>
+        </div>
+    </div>
+</header>

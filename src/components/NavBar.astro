@@ -1,0 +1,43 @@
+---
+import logoWeb from '../assets/logo_web.png'
+---
+
+<nav class="w-full max-w-[60%] mx-auto flex items-center justify-between p-5 text-white">
+    <img src={logoWeb.src} alt="logo" class="h-8 w-8" />
+
+    <button
+            id="menu-toggle"
+            class="md:hidden flex flex-col justify-center items-center gap-1"
+            aria-label="Abrir menú"
+    >
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+    </button>
+
+    <!-- Menú en desktop -->
+    <ul class="hidden md:flex gap-x-10">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Acerca de mí</a></li>
+        <li><a href="#">Proyectos</a></li>
+        <li><a href="#">Contacto</a></li>
+    </ul>
+</nav>
+
+<ul id="mobile-menu" class="hidden flex-col gap-4 px-5 pb-5 md:hidden">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Acerca de mí</a></li>
+    <li><a href="#">Proyectos</a></li>
+    <li><a href="#">Contacto</a></li>
+</ul>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+
+        toggle?.addEventListener("click", () => {
+            menu?.classList.toggle("hidden");
+        });
+    });
+</script>
