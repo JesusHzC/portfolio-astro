@@ -30,7 +30,8 @@ import logoWeb from '../assets/logo_web.png'
     <!-- Menú móvil -->
     <ul
             id="mobile-menu"
-            class="hidden absolute top-full left-0 w-full bg-[#110720]/90 backdrop-blur flex-col items-center text-center gap-4 py-6 px-6 lg:hidden text-white text-base font-medium z-40 transition-all"
+            style="display: none;"
+            class="absolute top-full left-0 w-full bg-[#110720]/90 backdrop-blur flex-col items-center text-center gap-4 py-6 px-6 lg:hidden text-white text-base font-medium z-40"
     >
         <li><a href="#about" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Acerca de mí</a></li>
         <li><a href="#work-experience" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Experiencia</a></li>
@@ -56,32 +57,77 @@ import logoWeb from '../assets/logo_web.png'
 </style>
 
 <script>
+    import { gsap } from "gsap";
+
     document.addEventListener("DOMContentLoaded", () => {
         const toggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("mobile-menu");
         const links = document.querySelectorAll("#mobile-menu .menu-link");
         const navbar = document.getElementById("navbar");
 
-        // Mostrar/ocultar menú móvil
+        let isMenuOpen = false;
+
+        // Mostrar/ocultar menú móvil con GSAP
         toggle?.addEventListener("click", () => {
-            menu?.classList.toggle("hidden");
-            document.body.classList.toggle("overflow-hidden");
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                gsap.fromTo(menu,
+                    { y: -20, autoAlpha: 0, display: "none" },
+                    { y: 0, autoAlpha: 1, display: "flex", duration: 0.4, ease: "power2.out" }
+                );
+                document.body.classList.add("overflow-hidden");
+            } else {
+                gsap.to(menu, {
+                    y: -20,
+                    autoAlpha: 0,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        menu.style.display = "none";
+                    }
+                });
+                document.body.classList.remove("overflow-hidden");
+            }
         });
 
         // Cerrar menú móvil al hacer click
         links.forEach(link => {
             link.addEventListener("click", () => {
-                menu?.classList.add("hidden");
+                isMenuOpen = false;
+                gsap.to(menu, {
+                    y: -20,
+                    autoAlpha: 0,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        menu.style.display = "none";
+                    }
+                });
                 document.body.classList.remove("overflow-hidden");
             });
         });
 
-        // Fondo dinámico del navbar
+        // Navbar con fondo dinámico y animación
+        let hasScrolled = false;
+
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add("bg-[#2e0c60]/90", "shadow-md");
-            } else {
-                navbar.classList.remove("bg-[#2e0c60]/90", "shadow-md");
+            const scrollY = window.scrollY;
+
+            if (scrollY > 20 && !hasScrolled) {
+                hasScrolled = true;
+                gsap.to(navbar, {
+                    backgroundColor: "transparent",  // Sin cambiar fondo, solo blur y sombra
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                    duration: 0.3,
+                });
+            } else if (scrollY <= 20 && hasScrolled) {
+                hasScrolled = false;
+                gsap.to(navbar, {
+                    backgroundColor: "transparent",
+                    boxShadow: "0 0 0 rgba(0,0,0,0)",
+                    duration: 0.3,
+                });
             }
 
             highlightCurrentSection();
@@ -110,7 +156,7 @@ import logoWeb from '../assets/logo_web.png'
             const scrollHeight = document.documentElement.scrollHeight;
             const innerHeight = window.innerHeight;
             const atTop = scrollTop === 0;
-            const atBottom = (scrollTop + innerHeight) >= (scrollHeight - 5);  // margen para final
+            const atBottom = (scrollTop + innerHeight) >= (scrollHeight - 5);
 
             if (atTop) {
                 menuItems.forEach((link, index) => {
@@ -153,9 +199,10 @@ import logoWeb from '../assets/logo_web.png'
             });
         }
 
-        highlightCurrentSection(); // Ejecutar al cargar
+        highlightCurrentSection();
         window.addEventListener("scroll", highlightCurrentSection);
     });
 </script>
+
 
 
