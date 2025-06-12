@@ -18,23 +18,21 @@ import womandrive from "../assets/womandrive.webp"
     <Header />
     <main class="w-full md:max-w-[60%] mx-auto my-10 p-5 text-white">
 
-        <section class="grid gap-y-6 tracking-wide max-w-3xl mx-auto text-white leading-relaxed
-                px-4 sm:px-6">
-            <h1 class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-                Soy Ingeniero de Software.
+        <section class="grid gap-y-8 tracking-wide max-w-3xl mx-auto text-white leading-relaxed px-4 sm:px-6">
+            <h1 class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-indigo-400 to-blue-500 leading-snug">
+                Soy Ingeniero de Software
             </h1>
-
             <p class="text-lg sm:text-xl text-gray-300">
-                Actualmente me desempeño como Ingeniero Android en Claro Video, creando experiencias móviles de alto rendimiento para millones de usuarios.
+                Hola soy Jesus! y actualmente me desempeño como <span class="text-purple-400 font-medium">Ingeniero Android en Claro Video</span>, creando experiencias móviles de alto rendimiento para millones de usuarios.
+            </p>
+            <h2 class="text-xl sm:text-2xl mt-12 font-semibold text-purple-300">
+                Soy un desarrollador autodidacta
+            </h2>
+            <p class="text-sm sm:text-base text-gray-400 border-l-4 border-purple-700/60 pl-4">
+                Con más de <span class="text-purple-400 font-medium">5 años de experiencia</span> en la industria, diseño y desarrollo aplicaciones web y móviles centradas en el usuario. Me enfoco en construir productos digitales que equilibran funcionalidad, experiencia y objetivos de negocio.
             </p>
 
-            <h2 class="text-xl sm:text-2xl mt-10 font-semibold text-purple-300">Soy un desarrollador autodidacta</h2>
-
-            <p class="text-xs sm:text-sm text-gray-400 border-l-4 border-purple-700 pl-4">
-                Con más de 5 años de experiencia en la industria, diseño y desarrollo aplicaciones web y móviles centradas en el usuario. Me enfoco en construir productos digitales que equilibran funcionalidad, experiencia y objetivos de negocio.
-            </p>
         </section>
-
 
         <section id="work-experience" class="w-full mt-30 px-4 sm:px-6 lg:px-0">
             <h3 class="text-3xl">Experiencia Laboral</h3>
@@ -169,13 +167,15 @@ import womandrive from "../assets/womandrive.webp"
             </div>
         </section>
 
-        <section id="projects" class="w-full mt-30">
+        <section id="projects" class="w-full mt-30 space-y-24">
             <h3 class="text-xl text-center">Proyectos</h3>
+
             <!-- Card Sana Medica Web -->
-            <div class="flex items-center relative mt-30">
-                <div class="relative z-20 translate-x-10">
+            <div class="flex flex-col lg:flex-row items-center relative mt-30 gap-6">
+                <!-- Texto -->
+                <div class="relative z-20 lg:translate-x-10 text-center lg:text-left">
                     <p class="text-[#CCD6F6] text-xl">Sana Medica</p>
-                    <div class="relative w-150 mt-4 rounded-xl overflow-hidden">
+                    <div class="relative w-full max-w-md mt-4 mx-auto lg:mx-0 rounded-xl overflow-hidden">
                         <div class="absolute inset-0 bg-[#693B93] opacity-70 blur-md"></div>
                         <div class="relative z-10 p-4 text-[#CCD6F6]">
                             <p>
@@ -184,30 +184,29 @@ import womandrive from "../assets/womandrive.webp"
                         </div>
                     </div>
                     <a href="https://www.sanamedica.com.mx/" target="_blank" rel="noopener noreferrer">
-                        <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] mt-2 cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
-                            <span class="text-sm text-[#CCD6F6]">
-                              Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </span>
+                        <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] mt-4 cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
+          <span class="text-sm text-[#CCD6F6]">
+            Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
+          </span>
                         </button>
                     </a>
                 </div>
 
-                <div class="relative -ml-12"> <!-- Mueve un poco la imagen hacia la izquierda para mayor superposición -->
+                <!-- Imagen -->
+                <div class="relative -ml-0 lg:-ml-12">
                     <div class="absolute inset-0 flex justify-center items-center -z-10 pointer-events-none">
-                        <div class="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
+                        <div class="w-[300px] h-[300px] lg:w-[600px] lg:h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
                     </div>
-                    <img
-                            src={sanamedica.src}
-                            class="h-70 w-100 z-10"
-                            style="box-shadow: -50px -20px 30px #110720;" />
+                    <img src={sanamedica.src} class="h-70 w-auto z-10 mx-auto lg:mx-0" style="box-shadow: -50px -20px 30px #110720;" />
                 </div>
             </div>
 
             <!-- Card Plaga Center Web -->
-            <div class="flex items-center relative flex-row-reverse mt-30">
-                <div class="relative z-20 -translate-x-10">
-                    <p class="text-[#CCD6F6] text-xl text-right">Plaga Center</p>
-                    <div class="relative w-150 mt-4 rounded-xl overflow-hidden">
+            <div class="flex flex-col lg:flex-row-reverse items-center relative mt-30 gap-6">
+                <!-- Texto -->
+                <div class="relative z-20 lg:-translate-x-10 text-center lg:text-right">
+                    <p class="text-[#CCD6F6] text-xl">Plaga Center</p>
+                    <div class="relative w-full max-w-md mt-4 mx-auto lg:mx-0 rounded-xl overflow-hidden">
                         <div class="absolute inset-0 bg-[#693B93] opacity-70 blur-md"></div>
                         <div class="relative z-10 p-4 text-[#CCD6F6]">
                             <p>
@@ -215,33 +214,32 @@ import womandrive from "../assets/womandrive.webp"
                             </p>
                         </div>
                     </div>
-                    <div class="flex justify-end">
-                        <a href="https://plagacenter.com.mx/" target="_blank" rel="noopener noreferrer" class="ml-auto">
-                            <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] mt-2 cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
-                            <span class="text-sm text-[#CCD6F6]">
-                              Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </span>
+                    <div class="flex justify-center lg:justify-end mt-4">
+                        <a href="https://plagacenter.com.mx/" target="_blank" rel="noopener noreferrer">
+                            <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
+            <span class="text-sm text-[#CCD6F6]">
+              Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
+            </span>
                             </button>
                         </a>
                     </div>
                 </div>
 
-                <div class="relative -mr-12"> <!-- Mueve la imagen hacia la derecha para que quede parcialmente debajo -->
+                <!-- Imagen -->
+                <div class="relative -mr-0 lg:-mr-12">
                     <div class="absolute inset-0 flex justify-center items-center -z-10 pointer-events-none">
-                        <div class="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
+                        <div class="w-[300px] h-[300px] lg:w-[600px] lg:h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
                     </div>
-                    <img
-                            src={plagacenter.src}
-                            class="h-70 w-100 z-10"
-                            style="box-shadow: 50px -20px 30px #110720;" />
+                    <img src={plagacenter.src} class="h-70 w-auto z-10 mx-auto lg:mx-0" style="box-shadow: 50px -20px 30px #110720;" />
                 </div>
             </div>
 
             <!-- Card Sana Medica App -->
-            <div class="flex items-center relative mt-30">
-                <div class="relative z-20 translate-x-10">
+            <div class="flex flex-col lg:flex-row items-center relative mt-30 gap-6">
+                <!-- Texto -->
+                <div class="relative z-20 lg:translate-x-10 text-center lg:text-left">
                     <p class="text-[#CCD6F6] text-xl">Sana Medica Android</p>
-                    <div class="relative w-150 mt-4 rounded-xl overflow-hidden">
+                    <div class="relative w-full max-w-md mt-4 mx-auto lg:mx-0 rounded-xl overflow-hidden">
                         <div class="absolute inset-0 bg-[#693B93] opacity-70 blur-md"></div>
                         <div class="relative z-10 p-4 text-[#CCD6F6]">
                             <p>
@@ -250,30 +248,29 @@ import womandrive from "../assets/womandrive.webp"
                         </div>
                     </div>
                     <a href="https://play.google.com/store/apps/details?id=mx.com.satoritech.sanaAndroid&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
-                        <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] mt-2 cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
-                            <span class="text-sm text-[#CCD6F6]">
-                              Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </span>
+                        <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] mt-4 cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
+          <span class="text-sm text-[#CCD6F6]">
+            Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
+          </span>
                         </button>
                     </a>
                 </div>
 
-                <div class="relative -ml-12 translate-x-10"> <!-- Mueve un poco la imagen hacia la izquierda para mayor superposición -->
+                <!-- Imagen -->
+                <div class="relative lg:-ml-12 translate-x-0 lg:translate-x-10">
                     <div class="absolute inset-0 flex justify-center items-center -z-10 pointer-events-none">
-                        <div class="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
+                        <div class="w-[300px] h-[300px] lg:w-[600px] lg:h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
                     </div>
-                    <img
-                            src={sanamedicaAndroid.src}
-                            class="h-70  z-10"
-                            style="box-shadow: -50px -20px 30px #110720;" />
+                    <img src={sanamedicaAndroid.src} class="h-70 w-auto z-10 mx-auto lg:mx-0" style="box-shadow: -50px -20px 30px #110720;" />
                 </div>
             </div>
 
             <!-- Card Woman Drive App -->
-            <div class="flex items-center relative flex-row-reverse mt-30">
-                <div class="relative z-20 -translate-x-10">
-                    <p class="text-[#CCD6F6] text-xl text-right">Woman Drive App</p>
-                    <div class="relative w-150 mt-4 rounded-xl overflow-hidden">
+            <div class="flex flex-col lg:flex-row-reverse items-center relative mt-30 gap-6">
+                <!-- Texto -->
+                <div class="relative z-20 lg:-translate-x-10 text-center lg:text-right">
+                    <p class="text-[#CCD6F6] text-xl">Woman Drive App</p>
+                    <div class="relative w-full max-w-md mt-4 mx-auto lg:mx-0 rounded-xl overflow-hidden">
                         <div class="absolute inset-0 bg-[#693B93] opacity-70 blur-md"></div>
                         <div class="relative z-10 p-4 text-[#CCD6F6]">
                             <p>
@@ -281,30 +278,29 @@ import womandrive from "../assets/womandrive.webp"
                             </p>
                         </div>
                     </div>
-                    <div class="flex justify-end">
-                        <a href="https://play.google.com/store/apps/details?id=mx.com.satoritech.womandriveandroidcliente&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" class="ml-auto">
-                            <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] mt-2 cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
-                            <span class="text-sm text-[#CCD6F6]">
-                              Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </span>
+                    <div class="flex justify-center lg:justify-end mt-4">
+                        <a href="https://play.google.com/store/apps/details?id=mx.com.satoritech.womandriveandroidcliente&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+                            <button class="rounded-xl px-5 py-2 bg-[#2C1250] border-2 border-[#693B93] cursor-pointer transition-transform duration-300 hover:scale-105 hover:bg-[#3d1d65]">
+            <span class="text-sm text-[#CCD6F6]">
+              Visitar <i class="fa-solid fa-arrow-right ml-2"></i>
+            </span>
                             </button>
                         </a>
                     </div>
                 </div>
 
-                <div class="relative -mr-12 -translate-x-10"> <!-- Mueve la imagen hacia la derecha para que quede parcialmente debajo -->
+                <!-- Imagen -->
+                <div class="relative lg:-mr-12 lg:-translate-x-10">
                     <div class="absolute inset-0 flex justify-center items-center -z-10 pointer-events-none">
-                        <div class="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
+                        <div class="w-[300px] h-[300px] lg:w-[600px] lg:h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
                     </div>
-                    <img
-                            src={womandrive.src}
-                            class="h-70 z-10"
-                            style="box-shadow: 50px -20px 30px #110720;" />
+                    <img src={womandrive.src} class="h-70 w-auto z-10 mx-auto lg:mx-0" style="box-shadow: 50px -20px 30px #110720;" />
                 </div>
             </div>
-
         </section>
+
     </main>
+
     <footer id="contact" class="w-full mt-30 bg-gradient-to-br from-[#1a0f33] to-[#2b1a4d] text-[#D1C4E9] p-8 text-center">
         <p class="text-xl font-semibold mb-4">Contacto</p>
         <p class="max-w-xl mx-auto mb-6 text-base leading-relaxed">
