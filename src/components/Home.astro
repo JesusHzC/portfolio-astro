@@ -163,7 +163,7 @@ import womandrive from "../assets/womandrive.webp"
             </div>
 
             <div class="w-full mt-10">
-                <img src={skills.src} class="w-full"/>
+                <img id="skills-image" src={skills.src} class="w-full"/>
             </div>
         </section>
 
@@ -323,3 +323,133 @@ import womandrive from "../assets/womandrive.webp"
     </footer>
 
 </div>
+
+<script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initAnimations() {
+        // Experiencia Laboral: animar cada card (.rounded-xl)
+        gsap.utils.toArray("#work-experience .rounded-xl").forEach((card) => {
+            gsap.fromTo(
+                card,
+                { y: 50, opacity: 0, scale: 0.9 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play reverse play reverse",
+                        // markers: true,
+                    },
+                }
+            );
+        });
+
+        // Skills: animar cada skill (cada div con icono dentro de #skills)
+        gsap.utils.toArray("#skills > div.flex > div.relative").forEach((skill) => {
+            gsap.fromTo(
+                skill,
+                { y: 30, opacity: 0, scale: 0.8 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.6,
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: skill,
+                        start: "top 90%",
+                        end: "bottom 10%",
+                        toggleActions: "play reverse play reverse",
+                    },
+                }
+            );
+        });
+
+        gsap.from("#skills-image", {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: "#skills-image",
+                start: "top 80%",
+                toggleActions: "play reverse play reverse"
+            },
+        });
+
+        // Proyectos: animar cada proyecto card (cada flex flex-col dentro de #projects)
+        gsap.utils.toArray("#projects > div.flex.flex-col").forEach((project) => {
+            gsap.fromTo(
+                project,
+                { x: -100, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: project,
+                        start: "top 85%",
+                        toggleActions: "play reverse play reverse",
+                    },
+                }
+            );
+        });
+
+        // Animar sección Sobre mí
+        const aboutSection = document.querySelector("section.grid.max-w-3xl");
+        if (aboutSection) {
+            gsap.fromTo(
+                aboutSection.children,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    stagger: 0.3,
+                    scrollTrigger: {
+                        trigger: aboutSection,
+                        start: "top 90%",
+                        toggleActions: "play reverse play reverse",
+                        // markers: true,
+                    },
+                }
+            );
+        }
+
+        // Animar footer #contact
+        const footer = document.querySelector("#contact");
+        if (footer) {
+            gsap.fromTo(
+                footer.children,
+                { y: 40, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    stagger: 0.25,
+                    scrollTrigger: {
+                        trigger: footer,
+                        start: "top 90%",
+                        toggleActions: "play reverse play reverse",
+                        // markers: true,
+                    },
+                }
+            );
+        }
+    }
+
+    window.addEventListener("load", initAnimations);
+</script>
+
