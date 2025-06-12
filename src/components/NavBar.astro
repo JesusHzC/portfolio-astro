@@ -27,10 +27,10 @@ import logoWeb from '../assets/logo_web.png'
         </ul>
     </div>
 
-    <!-- Menú móvil dentro del nav -->
+    <!-- Menú móvil -->
     <ul
             id="mobile-menu"
-            class="hidden absolute top-full left-0 w-full bg-[#110720]/90 backdrop-blur flex-col items-center text-center gap-4 py-6 px-6 lg:hidden text-white text-base font-medium z-40"
+            class="hidden absolute top-full left-0 w-full bg-[#110720]/90 backdrop-blur flex-col items-center text-center gap-4 py-6 px-6 lg:hidden text-white text-base font-medium z-40 transition-all"
     >
         <li><a href="#about" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Acerca de mí</a></li>
         <li><a href="#work-experience" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Experiencia</a></li>
@@ -39,6 +39,21 @@ import logoWeb from '../assets/logo_web.png'
         <li><a href="#contact" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Contacto</a></li>
     </ul>
 </nav>
+
+<style>
+    html {
+        scroll-padding-top: 100px; /* Ajustar según altura del navbar */
+    }
+
+    a.nav-link.active {
+        color: #B388FF;
+        font-weight: bold;
+    }
+
+    body.overflow-hidden {
+        overflow: hidden;
+    }
+</style>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -50,16 +65,18 @@ import logoWeb from '../assets/logo_web.png'
         // Mostrar/ocultar menú móvil
         toggle?.addEventListener("click", () => {
             menu?.classList.toggle("hidden");
+            document.body.classList.toggle("overflow-hidden");
         });
 
         // Cerrar menú móvil al hacer click
         links.forEach(link => {
             link.addEventListener("click", () => {
                 menu?.classList.add("hidden");
+                document.body.classList.remove("overflow-hidden");
             });
         });
 
-        // Cambiar fondo al hacer scroll
+        // Fondo dinámico del navbar
         window.addEventListener("scroll", () => {
             if (window.scrollY > 20) {
                 navbar.classList.add("bg-[#2e0c60]/90", "shadow-md");
@@ -84,17 +101,44 @@ import logoWeb from '../assets/logo_web.png'
             });
         });
 
-        // Highlight mejorado
+        // Resaltar sección actual
         const sections = document.querySelectorAll("section[id]");
         const menuItems = document.querySelectorAll("a.nav-link");
 
         function highlightCurrentSection() {
+            const scrollTop = window.scrollY || window.pageYOffset;
+            const scrollHeight = document.documentElement.scrollHeight;
+            const innerHeight = window.innerHeight;
+            const atTop = scrollTop === 0;
+            const atBottom = (scrollTop + innerHeight) >= (scrollHeight - 5);  // margen para final
+
+            if (atTop) {
+                menuItems.forEach((link, index) => {
+                    if (index === 0) link.classList.add("active");
+                    else link.classList.remove("active");
+                });
+                return;
+            }
+
+            if (atBottom) {
+                menuItems.forEach(link => {
+                    if (link.getAttribute("href") === "#contact") {
+                        link.classList.add("active");
+                    } else {
+                        link.classList.remove("active");
+                    }
+                });
+                return;
+            }
+
             let currentSectionId = null;
-            const offsetTrigger = window.innerHeight * 0.3;
+            let minDistance = Number.POSITIVE_INFINITY;
 
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                if (rect.top <= offsetTrigger && rect.bottom >= offsetTrigger) {
+                const distance = Math.abs(rect.top);
+                if (rect.top <= window.innerHeight && distance < minDistance) {
+                    minDistance = distance;
                     currentSectionId = section.id;
                 }
             });
@@ -102,15 +146,16 @@ import logoWeb from '../assets/logo_web.png'
             menuItems.forEach(link => {
                 const href = link.getAttribute("href")?.substring(1);
                 if (href === currentSectionId) {
-                    link.classList.add("text-[#B388FF]");
+                    link.classList.add("active");
                 } else {
-                    link.classList.remove("text-[#B388FF]");
+                    link.classList.remove("active");
                 }
             });
         }
 
-        window.addEventListener("scroll", highlightCurrentSection);
         highlightCurrentSection(); // Ejecutar al cargar
+        window.addEventListener("scroll", highlightCurrentSection);
     });
 </script>
+
 
