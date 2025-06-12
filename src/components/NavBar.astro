@@ -2,12 +2,13 @@
 import logoWeb from '../assets/logo_web.png'
 ---
 
-<nav class="w-full max-w-[60%] mx-auto flex items-center justify-between p-5 text-white">
-    <img src={logoWeb.src} alt="logo" class="h-8 w-8" />
+<nav class="w-full max-w-screen-xl mx-auto flex items-center justify-between p-5 text-white">
+    <img src={logoWeb.src} alt="logo" class="h-10 w-10" />
 
+    <!-- Botón hamburguesa: visible solo en pantallas < lg -->
     <button
             id="menu-toggle"
-            class="md:hidden flex flex-col justify-center items-center gap-1"
+            class="lg:hidden flex flex-col justify-center items-center gap-1"
             aria-label="Abrir menú"
     >
         <span class="w-6 h-0.5 bg-white"></span>
@@ -15,29 +16,41 @@ import logoWeb from '../assets/logo_web.png'
         <span class="w-6 h-0.5 bg-white"></span>
     </button>
 
-    <!-- Menú en desktop -->
-    <ul class="hidden md:flex gap-x-10">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Acerca de mí</a></li>
-        <li><a href="#">Proyectos</a></li>
-        <li><a href="#">Contacto</a></li>
+    <!-- Menú desktop -->
+    <ul class="hidden lg:flex gap-x-10 text-sm font-medium">
+        <li><a href="#about" class="hover:text-[#B388FF] transition-colors">Acerca de mí</a></li>
+        <li><a href="#work-experience" class="hover:text-[#B388FF] transition-colors">Experiencia</a></li>
+        <li><a href="#skills" class="hover:text-[#B388FF] transition-colors">Skills</a></li>
+        <li><a href="#projects" class="hover:text-[#B388FF] transition-colors">Proyectos</a></li>
+        <li><a href="#contact" class="hover:text-[#B388FF] transition-colors">Contacto</a></li>
     </ul>
 </nav>
 
-<ul id="mobile-menu" class="hidden flex-col gap-4 px-5 pb-5 md:hidden">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Acerca de mí</a></li>
-    <li><a href="#">Proyectos</a></li>
-    <li><a href="#">Contacto</a></li>
+<!-- Menú móvil -->
+<ul id="mobile-menu" class="hidden flex-col items-center text-center gap-4 px-6 pb-6 lg:hidden text-white text-base font-medium">
+    <li><a href="#about" class="menu-link hover:text-[#B388FF] transition-colors">Acerca de mí</a></li>
+    <li><a href="#work-experience" class="menu-link hover:text-[#B388FF] transition-colors">Experiencia</a></li>
+    <li><a href="#skills" class="menu-link hover:text-[#B388FF] transition-colors">Skills</a></li>
+    <li><a href="#projects" class="menu-link hover:text-[#B388FF] transition-colors">Proyectos</a></li>
+    <li><a href="#contact" class="menu-link hover:text-[#B388FF] transition-colors">Contacto</a></li>
 </ul>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const toggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("mobile-menu");
+        const links = document.querySelectorAll("#mobile-menu .menu-link");
 
         toggle?.addEventListener("click", () => {
             menu?.classList.toggle("hidden");
         });
+
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                menu?.classList.add("hidden");
+            });
+        });
     });
 </script>
+
+
