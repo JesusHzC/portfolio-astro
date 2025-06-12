@@ -3,7 +3,7 @@ import profile from '../assets/profile.png'
 ---
 
 <header id="about" class="w-full max-w-[60%] mx-auto my-10 p-5 text-white
-                       sm:max-w-[90%] sm:p-4
+                       sm:max-w-[100%] sm:p-4
                        xs:max-w-full xs:p-3">
     <div class="flex justify-center items-center my-10
               flex-col sm:flex-row sm:my-6 sm:gap-8">
@@ -13,14 +13,50 @@ import profile from '../assets/profile.png'
                 <div class="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-2xl opacity-90 z-0"></div>
 
                 <!-- Avatar Image -->
-                <img src={profile.src} alt="Avatar" class="h-32 sm:h-40 z-10" />
+                <img src={profile.src} alt="Avatar" class="h-32 sm:h-40 z-10 rounded-full" />
             </div>
         </div>
         <div class="grid gap-y-5 text-center sm:text-left sm:max-w-xl">
-            <p class="text-xl">Un desarrollador de software</p>
-            <p class="text-4xl sm:text-5xl">Web y móvil<br />desde la idea hasta el lanzamiento</p>
-            <p class="text-sm max-w-md mx-auto sm:mx-0">Construyo aplicaciones sólidas, modernas y centradas en el usuario.</p>
+            <p class="text-4xl sm:text-5xl font-bold leading-tight">
+                Aplicaciones web y móviles<br />
+                hechas para escalar
+            </p>
+            <p class="text-sm max-w-md mx-auto sm:mx-0">
+                Diseño, desarrollo e implemento soluciones digitales modernas con enfoque en rendimiento, usabilidad y experiencia de usuario.
+            </p>
         </div>
     </div>
 </header>
+
+
+<script>
+    import gsap from "gsap";
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const avatar = document.querySelector("#about img");
+        const texts = document.querySelector("#about .grid");
+
+        const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+        // Animamos avatar: entrada con y y opacidad
+        tl.from(avatar, {
+            y: 60,
+            scale: 0.8,
+            opacity: 0,
+            duration: 1.2,
+        })
+
+            // Animamos texto: opacidad y entrada desde la izquierda con stagger
+            .to(texts, {
+                opacity: 1,
+                duration: 0.5,
+            }, "-=0.7")
+            .from(texts.querySelectorAll("p"), {
+                x: -40,
+                opacity: 0,
+                stagger: 0.25,
+                duration: 0.6,
+            });
+    });
+</script>
 
