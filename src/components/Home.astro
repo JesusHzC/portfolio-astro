@@ -1,11 +1,129 @@
 ---
 import NavBar from "./NavBar.astro"
 import Header from "./Header.astro"
+
+import satoritech from "../assets/satoritech_logo.svg"
+import hitss from "../assets/claro-video.png"
+import upax from "../assets/upax.svg"
+import xybooster from "../assets/xy_booster.avif"
+import skills from "../assets/skills.png"
 ---
 
 <div class="container-fluid">
     <NavBar />
     <Header />
     <main class="w-full max-w-[60%] mx-auto my-10 p-5 text-white">
+
+        <section class="grid gap-y-6 tracking-wide max-w-3xl mx-auto text-white leading-relaxed">
+            <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+                Soy Ingeniero de Software.
+            </h1>
+
+            <p class="text-xl text-gray-300">
+                Actualmente me desempeño como Ingeniero Android en Claro Video, creando experiencias móviles de alto rendimiento para millones de usuarios.
+            </p>
+
+            <h2 class="text-2xl mt-10 font-semibold text-purple-300">Soy un desarrollador autodidacta</h2>
+
+            <p class="text-sm text-gray-400 border-l-4 border-purple-700 pl-4">
+                Con más de 5 años de experiencia en la industria, diseño y desarrollo aplicaciones web y móviles centradas en el usuario. Me enfoco en construir productos digitales que equilibran funcionalidad, experiencia y objetivos de negocio.
+            </p>
+        </section>
+
+        <section class="w-full mt-30">
+            <h3 class="text-3xl">Experiencia Laboral</h3>
+            <div class="relative mt-10">
+                <!-- Radial -->
+                <div class="absolute inset-0 flex justify-center items-center z-0 pointer-events-none">
+                    <div class="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_20%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
+                </div>
+
+                <!-- Cards container -->
+                <div class="relative grid grid-cols-2 gap-4 z-10">
+
+                    <!-- Claro Video (Hitss) -->
+                    <div class="rounded-xl border-t-4 border-[#4F228D] p-4 bg-gradient-to-br from-[#130428] via-[#251043] to-[#38126D]">
+                        <div class="flex gap-x-4 items-center">
+                            <img src={hitss.src} class="w-35 h-6" />
+                            <div class="grid gap-y-2">
+                                <p class="font-semibold text-white">Android Engineer</p>
+                                <p class="text-sm text-gray-300">
+                                    Responsable del mantenimiento y evolución de la app Claro Video, enfocándome en mejoras de rendimiento y experiencia de usuario para millones de usuarios activos.
+                                </p>
+                                <!--<button class="rounded-xl bg-[#2C1250] border border-[#693B93] p-2 w-30 cursor-pointer">
+                                    <span class="text-sm text-purple-200">Ver más</span>
+                                </button>-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- XY Booster -->
+                    <div class="rounded-xl border-t-4 border-[#4F228D] p-4 bg-gradient-to-br from-[#130428] via-[#251043] to-[#38126D]">
+                        <div class="flex gap-x-4 items-center">
+                            <img src={xybooster.src} class="w-35 h-5" />
+                            <div class="grid gap-y-2">
+                                <p class="font-semibold text-white">Desarrollador Android</p>
+                                <p class="text-sm text-gray-300">
+                                    Participé en el desarrollo de Fest Lovers desde cero y brindé soporte continuo a la app de XY Booster, mejorando funcionalidades clave y corrigiendo bugs críticos.
+                                </p>
+                                <!--<button class="rounded-xl bg-[#2C1250] border border-[#693B93] p-2 w-30 cursor-pointer">
+                                    <span class="text-sm text-purple-200">Ver más</span>
+                                </button>-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Italika+ -->
+                    <div class="rounded-xl border-t-4 border-[#4F228D] p-4 bg-gradient-to-br from-[#130428] via-[#251043] to-[#38126D]">
+                        <div class="flex gap-x-4 items-center">
+                            <img src={upax.src} class="w-30 h-30" />
+                            <div class="grid gap-y-2">
+                                <p class="font-semibold text-white">Desarrollador Android</p>
+                                <p class="text-sm text-gray-300">
+                                    Desarrollo y mantenimiento de la aplicación Italika+, ofreciendo soluciones personalizadas para mejorar la experiencia del usuario y la interacción con motociclistas.
+                                </p>
+                                <!--<button class="rounded-xl bg-[#2C1250] border border-[#693B93] p-2 w-30 cursor-pointer">
+                                    <span class="text-sm text-purple-200">Ver más</span>
+                                </button>-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SatoriTech -->
+                    <div class="rounded-xl border-t-4 border-[#4F228D] p-4 bg-gradient-to-br from-[#130428] via-[#251043] to-[#38126D]">
+                        <div class="flex gap-x-4 items-center">
+                            <img src={satoritech.src} class="w-30 h-30" />
+                            <div class="grid gap-y-2">
+                                <p class="font-semibold text-white">Desarrollador Web & Android</p>
+                                <p class="text-sm text-gray-300">
+                                    Diseño y desarrollo de aplicaciones móviles y web a nivel nacional e internacional, trabajando en soluciones a medida y despliegues escalables.
+                                </p>
+                                <!--<button class="rounded-xl bg-[#2C1250] border border-[#693B93] p-2 w-30 cursor-pointer">
+                                    <span class="text-sm text-purple-200">Ver más</span>
+                                </button>-->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mt-30">
+            <h4 class="text-center text-xl">Skills</h4>
+            <div class="flex w-full justify-center mt-10 gap-4 text-3xl text-[#E0CFFF]">
+                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-android"></i></div>
+                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-vuejs"></i></div>
+                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-html5"></i></div>
+                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-css3-alt"></i></div>
+                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-js"></i></div>
+                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-laravel"></i></div>
+                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-figma"></i></div>
+            </div>
+            <div class="w-full">
+                <img src={skills.src} class="w-full" />
+            </div>
+        </section>
+        
     </main>
 </div>
