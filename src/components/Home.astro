@@ -7,6 +7,7 @@ import hitss from "../assets/claro-video.png"
 import upax from "../assets/upax.svg"
 import xybooster from "../assets/xy_booster.avif"
 import skills from "../assets/skills.png"
+import sanamedica from "../assets/sanamedica.png"
 ---
 
 <div class="container-fluid">
@@ -175,6 +176,64 @@ import skills from "../assets/skills.png"
             </div>
         </section>
 
+        <section class="w-full mt-30">
+
+            <div class="flex items-center relative">
+                <div class="relative z-20 translate-x-10"> <!-- Mueve la card a la derecha -->
+                    <p class="text-[#CCD6F6] text-xl">Sana Medica</p>
+                    <div class="relative w-150 mt-4 rounded-xl overflow-hidden">
+                        <div class="absolute inset-0 bg-[#693B93] opacity-70 blur-md"></div>
+                        <div class="relative z-10 p-4 text-[#CCD6F6]">
+                            <p>
+                                A web app for visualizing personalized Spotify data. View your
+                                top artists, top tracks, recently played tracks, and detailed audio
+                                information about each track. Create and save new playlists of
+                                recommended tracks based on your existing playlists and more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative -ml-12"> <!-- Mueve un poco la imagen hacia la izquierda para mayor superposición -->
+                    <div class="absolute inset-0 flex justify-center items-center -z-10 pointer-events-none">
+                        <div class="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
+                    </div>
+                    <img
+                            src={sanamedica.src}
+                            class="h-70 w-100 z-10"
+                            style="box-shadow: -50px -20px 30px #110720;" />
+                </div>
+            </div>
+
+            <div class="flex items-center relative flex-row-reverse mt-30">
+                <div class="relative z-20 -translate-x-10">
+                    <p class="text-[#CCD6F6] text-xl text-right">Sana Medica</p>
+                    <div class="relative w-150 mt-4 rounded-xl overflow-hidden">
+                        <div class="absolute inset-0 bg-[#693B93] opacity-70 blur-md"></div>
+                        <div class="relative z-10 p-4 text-[#CCD6F6]">
+                            <p>
+                                A web app for visualizing personalized Spotify data. View your
+                                top artists, top tracks, recently played tracks, and detailed audio
+                                information about each track. Create and save new playlists of
+                                recommended tracks based on your existing playlists and more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative -mr-12"> <!-- Mueve la imagen hacia la derecha para que quede parcialmente debajo -->
+                    <div class="absolute inset-0 flex justify-center items-center -z-10 pointer-events-none">
+                        <div class="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(245,230,255,0.9)_0%,_rgba(118,60,172,0.6)_40%,_rgba(50,15,133,0.5)_80%)] blur-3xl opacity-80"></div>
+                    </div>
+                    <img
+                            src={sanamedica.src}
+                            class="h-70 w-100 z-10"
+                            style="box-shadow: 50px -20px 30px #110720;" />
+                </div>
+            </div>
+
+
+        </section>
 
     </main>
 </div>
