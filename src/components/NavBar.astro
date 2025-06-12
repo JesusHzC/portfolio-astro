@@ -2,55 +2,115 @@
 import logoWeb from '../assets/logo_web.png'
 ---
 
-<nav class="w-full max-w-screen-xl mx-auto flex items-center justify-between p-5 text-white">
-    <img src={logoWeb.src} alt="logo" class="h-10 w-10" />
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur transition-all duration-300">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between p-5 text-white">
+        <img src={logoWeb.src} alt="logo" class="h-10 w-10" />
 
-    <!-- Botón hamburguesa: visible solo en pantallas < lg -->
-    <button
-            id="menu-toggle"
-            class="lg:hidden flex flex-col justify-center items-center gap-1"
-            aria-label="Abrir menú"
+        <!-- Botón hamburguesa -->
+        <button
+                id="menu-toggle"
+                class="lg:hidden flex flex-col justify-center items-center gap-1"
+                aria-label="Abrir menú"
+        >
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+        </button>
+
+        <!-- Menú desktop -->
+        <ul class="hidden lg:flex gap-x-10 text-sm font-medium">
+            <li><a href="#about" class="hover:text-[#B388FF] transition-colors nav-link">Acerca de mí</a></li>
+            <li><a href="#work-experience" class="hover:text-[#B388FF] transition-colors nav-link">Experiencia</a></li>
+            <li><a href="#skills" class="hover:text-[#B388FF] transition-colors nav-link">Skills</a></li>
+            <li><a href="#projects" class="hover:text-[#B388FF] transition-colors nav-link">Proyectos</a></li>
+            <li><a href="#contact" class="hover:text-[#B388FF] transition-colors nav-link">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Menú móvil dentro del nav -->
+    <ul
+            id="mobile-menu"
+            class="hidden absolute top-full left-0 w-full bg-[#110720]/90 backdrop-blur flex-col items-center text-center gap-4 py-6 px-6 lg:hidden text-white text-base font-medium z-40"
     >
-        <span class="w-6 h-0.5 bg-white"></span>
-        <span class="w-6 h-0.5 bg-white"></span>
-        <span class="w-6 h-0.5 bg-white"></span>
-    </button>
-
-    <!-- Menú desktop -->
-    <ul class="hidden lg:flex gap-x-10 text-sm font-medium">
-        <li><a href="#about" class="hover:text-[#B388FF] transition-colors">Acerca de mí</a></li>
-        <li><a href="#work-experience" class="hover:text-[#B388FF] transition-colors">Experiencia</a></li>
-        <li><a href="#skills" class="hover:text-[#B388FF] transition-colors">Skills</a></li>
-        <li><a href="#projects" class="hover:text-[#B388FF] transition-colors">Proyectos</a></li>
-        <li><a href="#contact" class="hover:text-[#B388FF] transition-colors">Contacto</a></li>
+        <li><a href="#about" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Acerca de mí</a></li>
+        <li><a href="#work-experience" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Experiencia</a></li>
+        <li><a href="#skills" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Skills</a></li>
+        <li><a href="#projects" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Proyectos</a></li>
+        <li><a href="#contact" class="menu-link hover:text-[#B388FF] transition-colors nav-link">Contacto</a></li>
     </ul>
 </nav>
-
-<!-- Menú móvil -->
-<ul id="mobile-menu" class="hidden flex-col items-center text-center gap-4 px-6 pb-6 lg:hidden text-white text-base font-medium">
-    <li><a href="#about" class="menu-link hover:text-[#B388FF] transition-colors">Acerca de mí</a></li>
-    <li><a href="#work-experience" class="menu-link hover:text-[#B388FF] transition-colors">Experiencia</a></li>
-    <li><a href="#skills" class="menu-link hover:text-[#B388FF] transition-colors">Skills</a></li>
-    <li><a href="#projects" class="menu-link hover:text-[#B388FF] transition-colors">Proyectos</a></li>
-    <li><a href="#contact" class="menu-link hover:text-[#B388FF] transition-colors">Contacto</a></li>
-</ul>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const toggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("mobile-menu");
         const links = document.querySelectorAll("#mobile-menu .menu-link");
+        const navbar = document.getElementById("navbar");
 
+        // Mostrar/ocultar menú móvil
         toggle?.addEventListener("click", () => {
             menu?.classList.toggle("hidden");
         });
 
+        // Cerrar menú móvil al hacer click
         links.forEach(link => {
             link.addEventListener("click", () => {
                 menu?.classList.add("hidden");
             });
         });
+
+        // Cambiar fondo al hacer scroll
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add("bg-[#2e0c60]/90", "shadow-md");
+            } else {
+                navbar.classList.remove("bg-[#2e0c60]/90", "shadow-md");
+            }
+
+            highlightCurrentSection();
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+            });
+        });
+
+        // Highlight mejorado
+        const sections = document.querySelectorAll("section[id]");
+        const menuItems = document.querySelectorAll("a.nav-link");
+
+        function highlightCurrentSection() {
+            let currentSectionId = null;
+            const offsetTrigger = window.innerHeight * 0.3;
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= offsetTrigger && rect.bottom >= offsetTrigger) {
+                    currentSectionId = section.id;
+                }
+            });
+
+            menuItems.forEach(link => {
+                const href = link.getAttribute("href")?.substring(1);
+                if (href === currentSectionId) {
+                    link.classList.add("text-[#B388FF]");
+                } else {
+                    link.classList.remove("text-[#B388FF]");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", highlightCurrentSection);
+        highlightCurrentSection(); // Ejecutar al cargar
     });
 </script>
-
 
