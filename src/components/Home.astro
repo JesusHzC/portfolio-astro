@@ -111,19 +111,70 @@ import skills from "../assets/skills.png"
 
         <section class="w-full mt-30">
             <h4 class="text-center text-xl">Skills</h4>
-            <div class="flex w-full justify-center mt-10 gap-4 text-3xl text-[#E0CFFF]">
-                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-android"></i></div>
-                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-vuejs"></i></div>
-                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-html5"></i></div>
-                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-css3-alt"></i></div>
-                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-js"></i></div>
-                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-laravel"></i></div>
-                <div class="rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center"><i class="fa-brands fa-figma"></i></div>
+
+            <div class="flex w-full justify-center mt-10 gap-4 text-3xl text-[#E0CFFF] flex-wrap">
+                <!-- Android -->
+                <div class="relative group rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center">
+                    <i class="fa-brands fa-android"></i>
+                    <span class="absolute bottom-full mb-2 hidden group-hover:flex text-xs px-2 py-1 bg-black text-white rounded">
+        Android
+      </span>
+                </div>
+
+                <!-- Vue -->
+                <div class="relative group rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center">
+                    <i class="fa-brands fa-vuejs"></i>
+                    <span class="absolute bottom-full mb-2 hidden group-hover:flex text-xs px-2 py-1 bg-black text-white rounded">
+        Vue.js
+      </span>
+                </div>
+
+                <!-- HTML -->
+                <div class="relative group rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center">
+                    <i class="fa-brands fa-html5"></i>
+                    <span class="absolute bottom-full mb-2 hidden group-hover:flex text-xs px-2 py-1 bg-black text-white rounded">
+        HTML5
+      </span>
+                </div>
+
+                <!-- CSS -->
+                <div class="relative group rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <span class="absolute bottom-full mb-2 hidden group-hover:flex text-xs px-2 py-1 bg-black text-white rounded">
+        CSS3
+      </span>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="relative group rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center">
+                    <i class="fa-brands fa-js"></i>
+                    <span class="absolute bottom-full mb-2 hidden group-hover:flex text-xs px-2 py-1 bg-black text-white rounded">
+        JavaScript
+      </span>
+                </div>
+
+                <!-- Laravel -->
+                <div class="relative group rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center">
+                    <i class="fa-brands fa-laravel"></i>
+                    <span class="absolute bottom-full mb-2 hidden group-hover:flex text-xs px-2 py-1 bg-black text-white rounded">
+        Laravel
+      </span>
+                </div>
+
+                <!-- Figma -->
+                <div class="relative group rounded-full w-15 h-15 bg-[#251C31] flex justify-center items-center">
+                    <i class="fa-brands fa-figma"></i>
+                    <span class="absolute bottom-full mb-2 hidden group-hover:flex text-xs px-2 py-1 bg-black text-white rounded">
+        Figma
+      </span>
+                </div>
             </div>
-            <div class="w-full">
-                <img src={skills.src} class="w-full" />
+
+            <div class="w-full mt-10">
+                <img src={skills.src} class="w-full"/>
             </div>
         </section>
-        
+
+
     </main>
 </div>
